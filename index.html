@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <title>Movinstagram</title>
+</head>
+<body ng-app="MovinstagramApp">
+  <div class="container" ng-controller="searchMovies">
+    <banner></banner>
+    <h1>Search Movie Title</h1>
+    <p> </p>
+    <form>
+      <div class="search">
+       <input id="theSearch" ng-model="searchparam" placeholder="Enter movie name" type="text" ngTrim="true" ng-required="true"/>
+       <button ng-click="fetch()">Search</button>
+       <div class="clear"></div>
+      </div>
+    </form>
+    <div class="results" ng-if="movieResults && movieResults.length && !movieDetails">
+      <div ng-click="showDetails(movie)" movie class="result" dir-paginate="movie in movieResults | orderBy : '-Year' | itemsPerPage:4"></div>
+      <dir-pagination-controls max-size="4" direction-links="true" boundary-links="true"></dir-pagination-controls>
+    </div>
+    <div class="noResults" ng-if="hasUserSearch && !(movieResults && movieResults.length)">
+      <strong>{{msg}}</strong>
+    </div>
+    <movie-details></movie-details>
+  </div>
+</body>
+<script src="app/app.js"></script>
+<script src="app/directives/dirPagination.js"></script>
+<script src="app/directives/directive.banner.js"></script>
+<script src="app/directives/directive.movie.js"></script>
+<script src="app/directives/directive.movieDetails.js"></script>
+
+</html>

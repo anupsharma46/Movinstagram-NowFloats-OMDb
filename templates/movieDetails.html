@@ -1,0 +1,24 @@
+<div>
+  <div ng-if="movieDetails">
+      <button class="btn" ng-click="goToList()">Go back to search result</button>
+    <div class="movieDetails">
+     <span style="float:left; width:65%">
+        <div class="move-title">{{movieDetails.Title}} ({{movieDetails.Year}})</div>
+        <div><strong>Starring:</strong> {{movieDetails.Actors}}</div>
+        <div><strong>Genre:</strong> {{movieDetails.Genre}}</div>
+        <div><strong>Director:</strong> {{movieDetails.Director}}</div>
+        <div><strong>Writer:</strong> {{movieDetails.Writer}}</div>
+        <div><strong>Language:</strong> {{movieDetails.Language}}</div>
+        <div><strong>Plot: </strong>{{movieDetails.Plot}}</div>
+        <div><strong>Runtime:</strong> {{movieDetails.Runtime}}</div>
+     </span>
+      <span style="float:right; width:35%"><strong>Poster: </strong>
+       <div><img style="max-width:200px; max-height:250px" ng-src="{{movieDetails.Poster}}" /></div>
+     </span>
+    <div class="clear"></div>
+      <div class="reviews">
+       <em>IMDB Rating: {{movieDetails.imdbRating}} | IMDB Votes: {{movieDetails.imdbVotes}} | IMDB ID: {{movieDetails.imdbID}}</em>
+      </div>
+   </div>
+  </div>
+</div>
